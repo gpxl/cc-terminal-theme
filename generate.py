@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Generate a Claude Desktop-inspired Terminal.app theme file.
+"""Generate Claude Code Terminal.app theme files (light + dark).
 
-The Claude desktop app uses a warm, cream-tinted aesthetic with terracotta
-accents. This script generates a .terminal profile that captures that palette.
+Colors extracted from the Claude Code CLI source (v2.1.86).
+Maps the actual Claude Code semantic colors to ANSI terminal slots.
 
 Usage:
     python3 generate.py
 
 Output:
-    Claude.terminal — double-click to install on any Mac
+    Claude Light.terminal — light variant
+    Claude Dark.terminal  — dark variant
+    Double-click to install, or import via Terminal > Settings > Profiles
 """
 
 import plistlib
@@ -76,43 +78,74 @@ def encode_nsfont(name: str, size: float) -> bytes:
 
 
 # ---------------------------------------------------------------------------
-# Claude Desktop color palette
+# Claude Code themes — extracted from claude-code v2.1.86 source
 # ---------------------------------------------------------------------------
 
-PALETTE = {
+LIGHT_PALETTE = {
     # Core colors
-    "BackgroundColor": "#ffffff",       # Main content area — pure white
-    "TextColor": "#3b3b3b",            # Input text — warm charcoal
-    "BoldTextColor": "#2c2c2c",        # Emphasis — near-black
-    "CursorColor": "#c4725a",          # Claude terracotta
-    "CursorTextColor": "#ffffff",      # Text under cursor
-    "SelectionColor": "#f0ddd7",       # Warm orange-tinted selection
+    "BackgroundColor": "#ffffff",       # Main content area
+    "TextColor": "#000000",            # text: rgb(0,0,0)
+    "BoldTextColor": "#000000",        # Same as text
+    "CursorColor": "#D77757",          # claude: rgb(215,119,87)
+    "CursorTextColor": "#ffffff",      # inverseText: rgb(255,255,255)
+    "SelectionColor": "#B4D5FF",       # selectionBg: rgb(180,213,255)
 
-    # ANSI normal (muted, warm-shifted)
-    "ANSIBlackColor": "#3b3b3b",       # Warm charcoal
-    "ANSIRedColor": "#c4725a",         # Claude terracotta
-    "ANSIGreenColor": "#6b8f71",       # Warm muted green
-    "ANSIYellowColor": "#c9a96e",      # Warm amber
-    "ANSIBlueColor": "#6b7f99",        # Muted warm blue
-    "ANSIMagentaColor": "#9b7291",     # Warm mauve
-    "ANSICyanColor": "#6b9b9b",        # Warm teal
-    "ANSIWhiteColor": "#eae9e4",       # Chrome beige
+    # ANSI normal
+    "ANSIBlackColor": "#000000",       # text
+    "ANSIRedColor": "#D77757",         # claude: rgb(215,119,87)
+    "ANSIGreenColor": "#2C7A39",       # success: rgb(44,122,57)
+    "ANSIYellowColor": "#966C1E",      # warning: rgb(150,108,30)
+    "ANSIBlueColor": "#5769F7",        # suggestion/permission: rgb(87,105,247)
+    "ANSIMagentaColor": "#8700FF",     # autoAccept/merged: rgb(135,0,255)
+    "ANSICyanColor": "#006666",        # planMode: rgb(0,102,102)
+    "ANSIWhiteColor": "#AFAFAF",       # subtle: rgb(175,175,175)
 
-    # ANSI bright (lighter, slightly more saturated)
-    "ANSIBrightBlackColor": "#6b6b65", # Sidebar icon grey
-    "ANSIBrightRedColor": "#d4836b",   # Lighter terracotta
-    "ANSIBrightGreenColor": "#7faa85", # Lighter warm green
-    "ANSIBrightYellowColor": "#d9bc82",# Lighter amber
-    "ANSIBrightBlueColor": "#8299b3",  # Lighter warm blue
-    "ANSIBrightMagentaColor": "#b38aaa",# Lighter mauve
-    "ANSIBrightCyanColor": "#85b3b3",  # Lighter warm teal
-    "ANSIBrightWhiteColor": "#f5f4f0", # Lightest warm white
+    # ANSI bright (shimmer variants + brighter functional colors)
+    "ANSIBrightBlackColor": "#666666", # inactive: rgb(102,102,102)
+    "ANSIBrightRedColor": "#F59575",   # claudeShimmer: rgb(245,149,117)
+    "ANSIBrightGreenColor": "#69DB7C", # diffAdded: rgb(105,219,124)
+    "ANSIBrightYellowColor": "#C89E50",# warningShimmer: rgb(200,158,80)
+    "ANSIBrightBlueColor": "#7587FF",  # claudeBlueShimmer: rgb(117,135,255)
+    "ANSIBrightMagentaColor": "#FF0087",# bashBorder: rgb(255,0,135)
+    "ANSIBrightCyanColor": "#0891B2",  # cyan subagent: rgb(8,145,178)
+    "ANSIBrightWhiteColor": "#FFFFFF", # inverseText: rgb(255,255,255)
+}
+
+DARK_PALETTE = {
+    # Core colors
+    "BackgroundColor": "#1a1a1a",       # Dark background
+    "TextColor": "#FFFFFF",            # text: rgb(255,255,255)
+    "BoldTextColor": "#FFFFFF",        # Same as text
+    "CursorColor": "#D77757",          # claude: rgb(215,119,87)
+    "CursorTextColor": "#000000",      # inverseText: rgb(0,0,0)
+    "SelectionColor": "#264F78",       # selectionBg: rgb(38,79,120)
+
+    # ANSI normal
+    "ANSIBlackColor": "#000000",       # inverseText
+    "ANSIRedColor": "#D77757",         # claude: rgb(215,119,87)
+    "ANSIGreenColor": "#4EBA65",       # success: rgb(78,186,101)
+    "ANSIYellowColor": "#FFC107",      # warning: rgb(255,193,7)
+    "ANSIBlueColor": "#B1B9F9",        # suggestion/permission: rgb(177,185,249)
+    "ANSIMagentaColor": "#AF87FF",     # autoAccept/merged: rgb(175,135,255)
+    "ANSICyanColor": "#48968C",        # planMode: rgb(72,150,140)
+    "ANSIWhiteColor": "#999999",       # inactive: rgb(153,153,153)
+
+    # ANSI bright (shimmer variants + brighter functional colors)
+    "ANSIBrightBlackColor": "#505050", # subtle: rgb(80,80,80)
+    "ANSIBrightRedColor": "#EB9F7F",   # claudeShimmer: rgb(235,159,127)
+    "ANSIBrightGreenColor": "#38A660", # diffAddedWord: rgb(56,166,96)
+    "ANSIBrightYellowColor": "#FFDF39",# warningShimmer: rgb(255,223,57)
+    "ANSIBrightBlueColor": "#CFD7FF",  # permissionShimmer: rgb(207,215,255)
+    "ANSIBrightMagentaColor": "#FD5DB1",# bashBorder: rgb(253,93,177)
+    "ANSIBrightCyanColor": "#0891B2",  # cyan subagent: rgb(8,145,178)
+    "ANSIBrightWhiteColor": "#C1C1C1", # inactiveShimmer: rgb(193,193,193)
 }
 
 
-def main() -> None:
+def build_profile(name: str, palette: dict) -> dict:
+    """Build a Terminal.app profile dict from a name and color palette."""
     profile: dict = {
-        "name": "Claude",
+        "name": name,
         "type": "Window Settings",
         "ProfileCurrentVersion": 2.07,
 
@@ -151,19 +184,23 @@ def main() -> None:
         "BackgroundBlur": 0.0,
     }
 
-    # Encode and add all colors
-    for key, hex_color in PALETTE.items():
+    for key, hex_color in palette.items():
         profile[key] = encode_nscolor(hex_color)
 
-    # Font — SF Mono ships with macOS, guaranteed available
-    profile["Font"] = encode_nsfont("SFMono-Regular", 13.0)
+    return profile
 
-    # Write the .terminal file (XML plist — human-readable)
-    output = "Claude.terminal"
+
+def write_profile(profile: dict, output: str) -> None:
+    """Write a profile dict to an XML plist .terminal file."""
     with open(output, "wb") as f:
         plistlib.dump(profile, f, fmt=plistlib.FMT_XML)
+    print(f"  {output}")
 
-    print(f"Generated {output}")
+
+def main() -> None:
+    print("Generated:")
+    write_profile(build_profile("Claude Light", LIGHT_PALETTE), "Claude Light.terminal")
+    write_profile(build_profile("Claude Dark", DARK_PALETTE), "Claude Dark.terminal")
     print("Double-click to install, or import via Terminal > Settings > Profiles")
 
 
