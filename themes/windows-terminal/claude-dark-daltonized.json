@@ -1,0 +1,23 @@
+{
+  "name": "Claude Dark (Daltonized)",
+  "background": "#1A1A1A",
+  "foreground": "#FFFFFF",
+  "cursorColor": "#FF9933",
+  "selectionBackground": "#264F78",
+  "black": "#000000",
+  "red": "#FF9933",
+  "green": "#3399FF",
+  "yellow": "#FFCC00",
+  "blue": "#99CCFF",
+  "purple": "#AF87FF",
+  "cyan": "#48968C",
+  "white": "#999999",
+  "brightBlack": "#505050",
+  "brightRed": "#CC0000",
+  "brightGreen": "#0077B3",
+  "brightYellow": "#FFE632",
+  "brightBlue": "#B4D7FF",
+  "brightPurple": "#3399FF",
+  "brightCyan": "#00B2B2",
+  "brightWhite": "#C1C1C1"
+}
