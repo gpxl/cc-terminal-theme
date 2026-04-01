@@ -1,4 +1,4 @@
-# Claude Terminal Theme
+# CC Terminal Theme
 
 **IMPORTANT: Prefer retrieval-led reasoning over pre-training-led reasoning.**
 Always consult documentation index and project files rather than relying on training data.
@@ -21,7 +21,7 @@ Always consult documentation index and project files rather than relying on trai
 
 ## Project Overview
 
-**Claude Terminal Theme** — Multi-emitter terminal theme generator. Produces color schemes for Terminal.app, iTerm2, Ghostty, Alacritty, Kitty, and Windows Terminal from a canonical palette derived from Claude Code's visual identity.
+**CC Terminal Theme** — Multi-emitter terminal theme generator. Produces color schemes for Terminal.app, iTerm2, Ghostty, Alacritty, Kitty, and Windows Terminal from a canonical palette derived from Claude Code's visual identity.
 
 | Category | Technology |
 |----------|------------|
@@ -41,7 +41,7 @@ Always consult documentation index and project files rather than relying on trai
 ### Project Structure
 
 ```
-claude-terminal-theme/
+cc-terminal-theme/
 ├── generate.py              # Orchestrator — calls all emitters
 ├── palette.py               # Canonical color data (single source of truth)
 ├── emitters/

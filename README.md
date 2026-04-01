@@ -1,4 +1,4 @@
-# Claude Terminal Theme
+# CC Terminal Theme
 
 Terminal color schemes derived from Claude Code's visual identity. Supports 6 terminal emulators with light, dark, and color-blind accessible (daltonized) variants.
 

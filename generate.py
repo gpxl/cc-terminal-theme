@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate Claude terminal theme files for all supported emitters.
+"""Generate CC terminal theme files for all supported emitters.
 
 Reads the canonical palette from palette.py and generates theme files
 for Terminal.app, iTerm2, Ghostty, Alacritty, Kitty, and Windows Terminal.
@@ -31,7 +31,7 @@ EMITTERS = [
 
 
 def main() -> None:
-    print(f"Claude Terminal Theme (colors from Claude Code v{CLAUDE_CODE_VERSION})")
+    print(f"CC Terminal Theme (colors from Claude Code v{CLAUDE_CODE_VERSION})")
     print()
 
     total = 0

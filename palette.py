@@ -1,4 +1,4 @@
-"""Canonical color palette for Claude terminal themes.
+"""Canonical color palette for CC terminal themes.
 
 Single source of truth for all color data. Each theme variant defines
 core terminal colors (background, foreground, cursor, selection) and
