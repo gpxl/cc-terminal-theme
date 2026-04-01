@@ -1,0 +1,23 @@
+{
+  "name": "Claude Light (Daltonized)",
+  "background": "#FFFFFF",
+  "foreground": "#000000",
+  "cursorColor": "#FF9933",
+  "selectionBackground": "#B4D5FF",
+  "black": "#000000",
+  "red": "#CC0000",
+  "green": "#006699",
+  "yellow": "#FF9900",
+  "blue": "#3366FF",
+  "purple": "#8700FF",
+  "cyan": "#336666",
+  "white": "#AFAFAF",
+  "brightBlack": "#666666",
+  "brightRed": "#FF9933",
+  "brightGreen": "#99CCFF",
+  "brightYellow": "#FFB732",
+  "brightBlue": "#6598FF",
+  "brightPurple": "#0066CC",
+  "brightCyan": "#00B2B2",
+  "brightWhite": "#FFFFFF"
+}
