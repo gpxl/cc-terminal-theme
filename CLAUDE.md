@@ -78,6 +78,7 @@ cc-terminal-theme/
 | **Clean Room** | NEVER copy, adapt, or reference code from `~/projects/claude-code` — only color values |
 | **Releases** | NEVER auto-merge PRs — all merges require human approval |
 | **Generated Files** | NEVER hand-edit files in `themes/` — regenerate via `python3 generate.py` |
+| **Git Operations** | NEVER run `git add`/`git commit`/`git push` manually — ALL commits go through the agent pipeline (code-quality → commit agent) |
 
 ## Autonomy Tiers
 
